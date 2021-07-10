@@ -1,0 +1,7 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<p th:text="'hello ' + ${name}">hello! empty</p>
+<!--hello! empty 는 그냥 타임리프의 장점사용해서 서버없이 화면 보려고 써둔것. 서버 실행하면 'hello ' + ${name} 이것으로 치환돼서 출력됨-->
+<!-- ${name} : model에서 key가 name인 것을 꺼내서 치환-->
+</body>
+</html>
