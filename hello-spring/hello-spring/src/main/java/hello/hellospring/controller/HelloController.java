@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
+    // 컨트롤러에서 리턴 값으로 문자를 반환하면 뷰 리졸버( viewResolver )가 화면(html파일)을 찾아서 처리한다.
+    // -> 스프링 부트 템플릿엔진 기본 viewName 매핑
+    //    resources:templates/ +{ViewName}+ .html
+
     // 정적 컨텐츠 방식
     @GetMapping("hello") // localhost:8080 뒤에 /hello를 붙인 주소를 get
     public String hello(Model model){
@@ -17,6 +21,7 @@ public class HelloController {
     }
 
     // mvc 방식
+    // View: resources/template/hello-template.html
     @GetMapping("hello-mvc") // http://localhost:8080/hello-mvc?name=spring! -> name의 값이 spring!으로 바뀜 -> 모델에 들어감-> template으로 넘어감
     public String helloMvc(@RequestParam("name") String name, Model model){ // model이 name을 담으면 view에서 렌더링 할 떄 쓴다.
         //RequestParam 을 통해 외부에서 url 파라미터로 값(name)을 받아옴 (위의 hello 컨트롤러는 스프링이 직접 값(hello!!) 을 받아옴)
@@ -26,7 +31,7 @@ public class HelloController {
 
     //api 방식 - 문자 반환
     @GetMapping("hello-string") // http://localhost:8080/hello-string?name=spring!
-    @ResponseBody // http의 응답 body 부분에 "hello" + name 를 직접 넣겠다
+    @ResponseBody // http의 응답 body 부분에 "hello" + name 를 직접 넣겠다 (@ResponseBody 를 사용하면 뷰 리졸버( viewResolver )를 사용하지 않음)
     public String helloString(@RequestParam("name") String name){
         return "hello " + name; // "hello spring!"라는 문자가 요청한 client에게 그대로 내려감.
     }
