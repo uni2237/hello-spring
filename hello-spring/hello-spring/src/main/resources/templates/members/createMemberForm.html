@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <form action="/members/new" method="post">
+        <!--사용자가 이름입력 후 등록 버튼 누르면 -> action의 url로 post방식으로 넘어온다.
+        -> MemberController에서 @PostMapping("/members/new")인 함수와 매칭딤!
+        -->
+        <div class="form-group">
+            <label for="name">이름</label>
+            <!--id와 name중 name이 중요함! 서버로 넘어갈때 key가 됨!-->
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요"> <!--controller 폴더 아래 MemberForm 의 name과 매칭됨-->
+        </div>
+        <button type="submit">등록</button>
+    </form>
+</div> <!-- /container -->
+</body>
+</html>
