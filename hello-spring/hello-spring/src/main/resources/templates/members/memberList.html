@@ -11,8 +11,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="member : ${members}">
-                <td th:text="${member.id}"></td>
+            <tr th:each="member : ${members}"> <!-- ${ } 는 model안에서 값을 꺼내는 것-->
+                <td th:text="${member.id}"></td> <!-- domain/Member 의 getid를 사용하는것임!-->
                 <td th:text="${member.name}"></td>
             </tr>
             </tbody>
